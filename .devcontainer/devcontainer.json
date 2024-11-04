@@ -1,0 +1,15 @@
+{
+    "name": "VINS MONO Without ROS",
+    "service": "p_workspace",
+    "dockerComposeFile": ["docker-compose.yaml"],
+    "workspaceFolder": "/workspace",
+	"shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+            ]
+        }
+    },
+    "remoteUser": "root"
+
+}

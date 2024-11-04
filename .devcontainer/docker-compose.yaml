@@ -1,0 +1,33 @@
+# version: '3.8'
+services:
+  p_workspace:
+    tty: true
+    mem_limit: 16g
+    network_mode: host
+    ipc: host
+    user: root
+    build:
+      context: .
+      dockerfile: Dockerfile
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    privileged: true
+    environment:
+      DISPLAY: "${DISPLAY}"
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "compute,utility,graphics"
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      LIBGL_ALWAYS_INDIRECT: "1"
+      XDG_RUNTIME_DIR: "${XDG_RUNTIME_DIR}"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+      - "${XAUTHORITY}:/root/.Xauthority"
+      - "${HOME}/.ssh:/root/.ssh:ro"
+      - "../:/workspace"
+    runtime: nvidia
+    devices:
+      - "/dev/dri:/dev/dri"
+    command: tail -f /dev/null
