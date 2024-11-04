@@ -15,6 +15,10 @@ This project is used for an online course about visual inertial odometry on [she
 3. Eigen
 
 4. Ceres. Uhhhhh, vins-mono use ceres to do sfm bundle adjustment. So we need ceres. 
+```bash
+chmod +x install_thirdparty.sh
+./install_thirdparty.sh
+```
 
 ### Build
 
