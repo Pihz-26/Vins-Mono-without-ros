@@ -48,7 +48,8 @@ RUN   apt-get update && apt-get install -y --no-install-recommends --fix-missing
       libwayland-doc \
       libxext-doc \
       libxext-dev \ 
-      libceres-dev
+      libceres-dev \
+      udev
 
 
 CMD ["tail", "-f", "/dev/null"]
