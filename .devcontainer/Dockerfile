@@ -1,13 +1,14 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=UTC
+ENV TZ=Asia/Shanghai
+
 ENV HTTP_PROXY="http://127.0.0.1:7897"
 ENV HTTPS_PROXY="http://127.0.0.1:7897"
 
-# 更换 Ubuntu 20.04 的源
-RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list
-RUN sed -i 's/http:\/\/security.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list
+# 更换 Ubuntu 22.04 的源（从 Ubuntu 20.04 修改为 22.04）
+RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list && \
+    sed -i 's/http:\/\/security.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list
 
 RUN   apt-get update && apt-get install -y --no-install-recommends\
       lsb-release \
@@ -48,30 +49,8 @@ RUN   apt-get update && apt-get install -y --no-install-recommends\
       libglfw3-doc \
       libwayland-doc \
       libxext-doc \
-      libxext-dev
-
-
-
-# RUN   mkdir /dependencies && \
-#       cd /dependencies && \
-#       git clone https://github.com/stevenlovegrove/Pangolin.git && \
-#       cd Pangolin && \
-#       mkdir build && \
-#       cd build && \
-#       cmake .. && \
-#       make -j$(nproc) && \
-#       make install
-
-# RUN   cd /dependencies && \
-#       git clone https://ceres-solver.googlesource.com/ceres-solver && \
-#       cd ceres-solver && \
-#       mkdir build && \
-#       cd build && \
-#       cmake .. && \
-#       make -j$(nproc) && \
-#       make install
-
-
+      libxext-dev \
+      libceres-dev
 
 
 CMD ["tail", "-f", "/dev/null"]
