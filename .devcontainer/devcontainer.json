@@ -1,15 +1,37 @@
 {
-    "name": "VINS MONO Without ROS",
-    "service": "p_workspace",
-    "dockerComposeFile": ["docker-compose.yaml"],
-    "workspaceFolder": "/workspace",
+	"name": "VINS MONO",
+	"service": "cv_workspace",
+	"initializeCommand": "bash .devcontainer/setup_container.sh",
+	"dockerComposeFile": [
+		"docker-compose.yaml",
+		"docker-compose.gpu.yaml",
+		"docker-compose.os.yaml"
+	],
+	"workspaceFolder": "/workspace",
 	"shutdownAction": "stopCompose",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-            ]
-        }
-    },
-    "remoteUser": "root"
-
+	"remoteUser": "root",
+  	"logLevel": "debug",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"althack.ament-task-provider",
+				"betwo.b2-catkin-tools",
+				"DotJoshJohnson.xml",
+				"ms-azuretools.vscode-docker",
+				"ms-iot.vscode-ros",
+				"ms-python.python",
+				"ms-vscode.cpptools",
+				"redhat.vscode-yaml",
+				"smilerobotics.urdf",
+				"twxs.cmake",
+				"yzhang.markdown-all-in-one",
+				"GitHub.copilot",
+				"donjayamanne.githistory",
+				"CodeInChinese.EnglishChineseDictionary",
+				"ms-python.black-formatter",
+				"llvm-vs-code-extensions.vscode-clangd",
+				"ms-vscode-remote.remote-containers"
+			]
+		}
+	}
 }

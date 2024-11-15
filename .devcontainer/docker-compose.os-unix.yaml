@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  cv_workspace:
+    network_mode: host
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /mnt/wslg:/mnt/wslg
+      - ${HOME}/.ssh/:/root/.ssh/:ro
+    environment:
+      DISPLAY: "${DISPLAY}"
+      WAYLAND_DISPLAY: "${WAYLAND_DISPLAY}"
+      XDG_RUNTIME_DIR: "${XDG_RUNTIME_DIR}"
+      PULSE_SERVER: "${PULSE_SERVER}"
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      LIBGL_ALWAYS_INDIRECT: "1"
+    devices:
+      - "/dev/dri:/dev/dri"

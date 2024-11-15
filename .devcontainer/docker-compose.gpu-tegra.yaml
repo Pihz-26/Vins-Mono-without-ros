@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  cv_workspace:
+    build:
+      dockerfile: Dockerfile.l4t.35
+    runtime: nvidia
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all

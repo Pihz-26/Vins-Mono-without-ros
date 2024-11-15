@@ -1,0 +1,19 @@
+##########################################################################################
+# DO NOT MODIFY THE CONTENTS OF THIS FILE! The contents of this file are automatically
+# generated and replaced during the devcontainer initialization process. To make changes, 
+# please edit `docker-compose.gpu-xxx.yaml` instead.
+##########################################################################################
+version: '3.8'
+services:
+  cv_workspace:
+    build:
+      dockerfile: Dockerfile
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]

@@ -1,16 +1,14 @@
-FROM ubuntu:22.04
+FROM  m.daocloud.io/ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 
-ENV HTTP_PROXY="http://127.0.0.1:7897"
-ENV HTTPS_PROXY="http://127.0.0.1:7897"
+# 替换为阿里云镜像源
+RUN sed -i 's|http://archive.ubuntu.com|http://mirrors.aliyun.com|g' /etc/apt/sources.list
+RUN sed -i 's|http://security.ubuntu.com|http://mirrors.aliyun.com|g' /etc/apt/sources.list
 
-# 更换 Ubuntu 22.04 的源（从 Ubuntu 20.04 修改为 22.04）
-RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list && \
-    sed -i 's/http:\/\/security.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list
 
-RUN   apt-get update && apt-get install -y --no-install-recommends\
+RUN   apt-get update && apt-get install -y --no-install-recommends --fix-missing\
       lsb-release \
       curl \
       gnupg2 \
@@ -49,10 +47,7 @@ RUN   apt-get update && apt-get install -y --no-install-recommends\
       libglfw3-doc \
       libwayland-doc \
       libxext-doc \
-      libxext-dev \
-      libceres-dev
+      libxext-dev
 
 
 CMD ["tail", "-f", "/dev/null"]
-
-
