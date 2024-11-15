@@ -47,7 +47,8 @@ RUN   apt-get update && apt-get install -y --no-install-recommends --fix-missing
       libglfw3-doc \
       libwayland-doc \
       libxext-doc \
-      libxext-dev
+      libxext-dev \ 
+      libceres-dev
 
 
 CMD ["tail", "-f", "/dev/null"]
