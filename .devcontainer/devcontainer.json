@@ -29,8 +29,10 @@
 				"donjayamanne.githistory",
 				"CodeInChinese.EnglishChineseDictionary",
 				"ms-python.black-formatter",
-				"llvm-vs-code-extensions.vscode-clangd",
-				"ms-vscode-remote.remote-containers"
+				// "llvm-vs-code-extensions.vscode-clangd",
+				"ms-vscode-remote.remote-containers",
+				"ms-vscode.cmake-tools", 
+				"ms-vscode.cpptools-extension-pack"
 			]
 		}
 	}
